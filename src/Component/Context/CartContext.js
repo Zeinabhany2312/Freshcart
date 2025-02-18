@@ -58,12 +58,15 @@ export function CartContextProvider({ children }) {
         let options = {
             headers: {
                 token: localStorage.getItem("userToken")
+            },
+            params : {
+                url : "https://Zeinabhany2312.github.io/Freshcart/#"
             }
         }
         let body = {
             shippingAddress: data
         }
-        return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=http://localhost:3000`, body, options)
+        return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}`, body, options)
     }
     return <CartContext.Provider value={{ addCart, numsItem, setItemNum, getUserCart, clearCart, removeCart, updateCart,checkoutPayment }}>
         {children}

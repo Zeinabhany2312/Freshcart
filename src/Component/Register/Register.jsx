@@ -10,13 +10,9 @@ export default function Register() {
   let [errMessage, setErrMessage] = useState('')
   let [loading, setLoading] = useState(true)
 
-  function RegisterForm(val) {
+ async function RegisterForm(val) {
     setLoading(false)
-    let req = axios.post('https://ecommerce.routemisr.com/api/v1/auth/signup', val).catch(function (err) {
-      setErrMessage(err.response.data.message)
-      setLoading(true)
-      console.log();
-    })
+    let req = await axios.post('https://ecommerce.routemisr.com/api/v1/auth/signup', val)
     if (req?.data.message == 'success') {
       navg('/login')
       setLoading(true)
